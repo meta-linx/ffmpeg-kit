@@ -10,10 +10,10 @@
 
 ### 2. Building
 
-Run `android.sh` at project root directory to build `ffmpeg-kit` and `ffmpeg` shared libraries. 
+Run `android.sh` at project root directory to build `ffmpeg-kit` and `ffmpeg` shared libraries.
 
-Please note that `FFmpegKit` project repository includes the source code of `FFmpegKit` only. `android.sh` needs 
-network connectivity and internet access to `github.com` in order to download the source code of `FFmpeg` and 
+Please note that `FFmpegKit` project repository includes the source code of `FFmpegKit` only. `android.sh` needs
+network connectivity and internet access to `github.com` in order to download the source code of `FFmpeg` and
 external libraries enabled.
 
 #### 2.1 Prerequisites
@@ -32,7 +32,7 @@ Use your package manager (apt, yum, dnf, brew, etc.) to install the following pa
 autoconf automake libtool pkg-config curl git doxygen nasm cmake gcc gperf texinfo yasm bison autogen wget autopoint meson ninja ragel groff gtk-doc-tools libtasn1
 ```
 
-##### 2.1.3 Environment Variables 
+##### 2.1.3 Environment Variables
 
 Set `ANDROID_SDK_ROOT` and `ANDROID_NDK_ROOT` environment variables before running `android.sh`.
 
@@ -67,8 +67,8 @@ All libraries created by `android.sh` can be found under the `prebuilt` director
 
 #### 3.1 Android API
 
-1. Declare `mavenCentral` repository and add `FFmpegKit` dependency to your `build.gradle` in 
-   `ffmpeg-kit-<package name>` pattern. Use one of the `FFmpegKit` package names given in the 
+1. Declare `mavenCentral` repository and add `FFmpegKit` dependency to your `build.gradle` in
+   `ffmpeg-kit-<package name>` pattern. Use one of the `FFmpegKit` package names given in the
    project [README](https://github.com/arthenica/ffmpeg-kit).
 
     ```yaml
@@ -103,7 +103,7 @@ All libraries created by `android.sh` can be found under the `prebuilt` director
     }
     ```
 
-3. Each `execute` call (sync or async) creates a new session. Access every detail about your execution from the 
+3. Each `execute` call (sync or async) creates a new session. Access every detail about your execution from the
    session created.
 
     ```java
@@ -190,7 +190,7 @@ All libraries created by `android.sh` can be found under the `prebuilt` director
 
     ```java
     FFprobeKit.executeAsync(ffprobeCommand, new FFprobeSessionCompleteCallback() {
-   
+
         @Override
         public void apply(FFprobeSession session) {
 
@@ -220,15 +220,15 @@ All libraries created by `android.sh` can be found under the `prebuilt` director
 
 8. Convert Storage Access Framework (SAF) Uris into paths that can be read or written by `FFmpegKit`.
    - Reading a file:
-  
+
         ```java
         Uri safUri = intent.getData();
         String inputVideoPath = FFmpegKitConfig.getSafParameterForRead(requireContext(), safUri);
         FFmpegKit.execute("-i " + inputVideoPath + " -c:v mpeg4 file2.mp4");
         ```
-    
+
     - Writing to a file:
-  
+
         ```java
         Uri safUri = intent.getData();
         String outputVideoPath = FFmpegKitConfig.getSafParameterForWrite(requireContext(), safUri);
@@ -293,7 +293,7 @@ All libraries created by `android.sh` can be found under the `prebuilt` director
 
         ```java
         FFmpegKitConfig.enableLogCallback(new LogCallback() {
-    
+
             @Override
             public void apply(final com.arthenica.ffmpegkit.Log log) {
                 ...
