@@ -1,0 +1,3 @@
+[submodule "src/gmp"]
+	path = src/gmp
+	url = https://github.com/sglim/gmp
