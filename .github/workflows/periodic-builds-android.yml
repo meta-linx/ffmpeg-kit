@@ -49,13 +49,11 @@ jobs:
         run: |
           cd prebuilt
           zip ../release.zip *
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         with:
-          tag_name: v1.0.0
-          files: release.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: build-output
+          path: release.zip
   build-android-lts-on-linux:
     name: android lts on linux
     runs-on: ubuntu-22.04
@@ -99,10 +97,8 @@ jobs:
         run: |
           cd prebuilt
           zip ../release.zip *
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         with:
-          tag_name: v1.0.0
-          files: release.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: build-output
+          path: release.zip
